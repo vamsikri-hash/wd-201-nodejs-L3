@@ -20,11 +20,11 @@ const todoList = () => {
   const dueLater = () => all.filter((todo) => compareDate(todo.dueDate) > 0);
 
   const toDisplayableList = (list) =>
-    list.reduce((acc, todo) => {
+    list.map((todo) => {
       const checkbox = todo.completed ? "[X]" : "[ ]";
       const displayDate = compareDate(todo.dueDate) === 0 ? "" : todo.dueDate;
-      return acc + `${checkbox}  ${todo.title}  ${displayDate} \n`;
-    }, "");
+      return `${checkbox}  ${todo.title}  ${displayDate}`;
+    }).join("\n");
 
   return {
     all,
